@@ -118,4 +118,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+# main static search path, per app
 STATIC_URL = '/static/'
+
+# additional search path for root static items
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]

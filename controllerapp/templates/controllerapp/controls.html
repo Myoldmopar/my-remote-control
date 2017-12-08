@@ -3,37 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Volume Controller</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <link rel="stylesheet" href="{% static 'vendors/bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
+    <script src="{% static 'vendors/bower_components/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'vendors/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'vendors/bower_components/angular/angular.js' %}"></script>
+
 </head>
 <body ng-app="volumeApp">
 <div ng-controller="volumeController">
-    <div id="wrapper" class="col-md-1 col-xs-6">
+    <div id="wrapper" class="col-md-1 col-xs-4 col-md-offset-1 col-xs-offset-1">
         <h2>Volume</h2>
         <div class="row padded">
             <button class="btn btn-primary btn-lg" ng-click="volumeUp()">
-                Volume Up
+                Up
             </button>
         </div>
         <div class="row padded">
             <button class="btn btn-primary btn-lg" ng-click="volumeDown()">
-                Volume Down
+                Down
             </button>
         </div>
         <div class="row padded">
             <button class="btn btn-primary btn-lg" ng-click="volumeMute()">
-                Mute/Unmute
+                Mute
             </button>
         </div>
     </div>
-    <div id="wrapper" class="col-md-1 col-xs-6">
-        <h2>Media</h2>
+    <div id="wrapper" class="col-md-1 col-xs-4 col-md-offset-1 col-xs-offset-2">
+        <h2>Pithos</h2>
         <div class="row padded">
             <button class="btn btn-success btn-lg" ng-click="openPithos()">
-                Open Pithos
+                Open
             </button>
         </div>
         <div class="row padded">
@@ -48,7 +51,7 @@
         </div>
         <div class="row padded">
             <button class="btn btn-danger btn-lg" ng-click="closePithos()">
-                Close Pithos
+                Close
             </button>
         </div>
     </div>
@@ -58,12 +61,13 @@
         align-items: center;
         justify-content: center;
         text-align: center;
-        padding: 10px;
     }
+
     button {
         width: 100%;
         font-weight: bold;
     }
+
     .padded {
         padding-bottom: 10px;
     }
