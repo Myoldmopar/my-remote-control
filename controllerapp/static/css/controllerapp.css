@@ -9,6 +9,12 @@ button {
     font-weight: bold;
 }
 
+input {
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+}
+
 .padded {
     padding-bottom: 10px;
 }

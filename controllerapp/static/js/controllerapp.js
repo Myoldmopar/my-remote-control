@@ -2,13 +2,29 @@ var app = angular.module('controllerApp', []);
 
 app.controller('volumeController', ['$scope', '$http', function ($scope, $http) {
     $scope.volumeUp = function () {
-        $http.get('/api/volume/up/');
+        $http.get('/api/volume/up/').then(
+            function(response) {
+                $scope.notification_text = "Volume: " + response.data.new_volume + "%"
+            }
+        );
     };
     $scope.volumeDown = function () {
-        $http.get('/api/volume/down/');
+        $http.get('/api/volume/down/').then(
+            function(response) {
+                $scope.notification_text = "Volume: " + response.data.new_volume + "%"
+            }
+        );
     };
     $scope.volumeMute = function () {
-        $http.get('/api/volume/toggle_mute/');
+        $http.get('/api/volume/toggle_mute/').then(
+            function(response) {
+                if (response.data.muted) {
+                    $scope.notification_text = "Muted!";
+                } else {
+                    $scope.notification_text = "Not Muted";
+                }
+            }
+        );
     };
 }]);
 

@@ -21,18 +21,27 @@ class VolumeViewSet(viewsets.GenericViewSet):
 
     @list_route(methods=['GET'])
     def up(self, request):
-        self.volume.up_increment()
-        return JsonResponse({'status': 'success'}, status=status.HTTP_200_OK)
+        response = self.volume.up_increment()
+        if response['success']:
+            return JsonResponse(response, status=status.HTTP_200_OK)
+        else:
+            return JsonResponse(response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     @list_route(methods=['GET'])
     def down(self, request):
-        self.volume.down_increment()
-        return JsonResponse({'status': 'success'}, status=status.HTTP_200_OK)
+        response = self.volume.down_increment()
+        if response['success']:
+            return JsonResponse(response, status=status.HTTP_200_OK)
+        else:
+            return JsonResponse(response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     @list_route(methods=['GET'])
     def toggle_mute(self, request):
-        self.volume.toggle_mute()
-        return JsonResponse({'status': 'success'}, status=status.HTTP_200_OK)
+        response = self.volume.toggle_mute()
+        if response['success']:
+            return JsonResponse(response, status=status.HTTP_200_OK)
+        else:
+            return JsonResponse(response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class MediaViewSet(viewsets.GenericViewSet):
