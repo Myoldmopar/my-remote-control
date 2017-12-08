@@ -24,8 +24,8 @@
             </button>
         </div>
         <div class="row padded">
-            <button class="btn btn-danger btn-lg" ng-click="volumeMute()">
-                MUTE
+            <button class="btn btn-primary btn-lg" ng-click="volumeMute()">
+                Mute/Unmute
             </button>
         </div>
     </div>
@@ -79,19 +79,19 @@
                 $http.get('/api/volume/down/');
             };
             $scope.volumeMute = function () {
-                $http.get('/api/volume/mute/');
+                $http.get('/api/volume/toggle_mute/');
             };
             $scope.playPause = function () {
-                $http.get('/api/volume/play_pause/');
+                $http.get('/api/media/play_pause/');
             };
             $scope.nextSong = function () {
-                $http.get('/api/volume/next_song/');
+                $http.get('/api/media/next_song/');
             };
             $scope.openPithos = function () {
-                $http.get('/api/volume/open_pithos/');
+                $http.get('/api/media/open_pithos/');
             };
             $scope.closePithos = function () {
-                $http.get('/api/volume/close_pithos/');
+                $http.get('/api/media/close_pithos/');
             };
         }]);
 </script>

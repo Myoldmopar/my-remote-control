@@ -5,33 +5,41 @@ from django.http import JsonResponse
 from django.shortcuts import render
 
 
-from controls.volume import MediaController
+from controls.volume import VolumeController
+from controls.media import MediaController
 
 
-def volume_page(request):
-    return render(request, 'controllerapp/volume.html', {})
+def control_page(request):
+    return render(request, 'controllerapp/controls.html', {})
 
 
 class VolumeViewSet(viewsets.GenericViewSet):
 
     def __init__(self):
         super(VolumeViewSet, self).__init__()
-        self.media = MediaController()
+        self.volume = VolumeController()
 
     @list_route(methods=['GET'])
     def up(self, request):
-        self.media.up_increment()
+        self.volume.up_increment()
         return JsonResponse({'status': 'success'}, status=status.HTTP_200_OK)
 
     @list_route(methods=['GET'])
     def down(self, request):
-        self.media.down_increment()
+        self.volume.down_increment()
         return JsonResponse({'status': 'success'}, status=status.HTTP_200_OK)
 
     @list_route(methods=['GET'])
     def mute(self, request):
-        self.media.mute()
+        self.volume.mute()
         return JsonResponse({'status': 'success'}, status=status.HTTP_200_OK)
+
+
+class MediaViewSet(viewsets.GenericViewSet):
+
+    def __init__(self):
+        super(MediaViewSet, self).__init__()
+        self.media = MediaController()
 
     @list_route(methods=['GET'])
     def play_pause(self, request):

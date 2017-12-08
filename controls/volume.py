@@ -1,10 +1,9 @@
-import os
 import alsaaudio
+
 from controls.exceptions import ValueOutOfRange
 
 
-class MediaController(object):
-
+class VolumeController(object):
     def __init__(self):
         self.mixer = alsaaudio.Mixer()
         self._increment = 2
@@ -34,17 +33,8 @@ class MediaController(object):
     def max_volume(self):
         self.mixer.setvolume(100)
 
-    def mute(self):
-        self.mixer.setvolume(0)
-
-    def play_pause(self):
-        os.system("xdotool key XF86AudioPlay")
-
-    def next_song(self):
-        os.system("xdotool key XF86AudioNext")
-
-    def open_pithos(self):
-        os.system("pithos")
-
-    def close_pithos(self):
-        os.system("killall pithos")
+    def toggle_mute(self):
+        if self.mixer.getmute() == 0:
+            self.mixer.setmute(1)
+        else:
+            self.mixer.setmute(0)

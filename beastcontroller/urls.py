@@ -16,14 +16,15 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework import routers
-from controllerapp.views import VolumeViewSet, volume_page
+from controllerapp.views import VolumeViewSet, MediaViewSet, control_page
 
 api_router = routers.SimpleRouter()
 api_router.register(r'volume', VolumeViewSet, base_name='volume')
+api_router.register(r'media', MediaViewSet, base_name='media')
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', volume_page, name='volume'),
-    url(r'^volume/', volume_page, name='volume'),
+    url(r'^$', control_page, name='controls'),
+    url(r'^controls/', control_page, name='controls'),
     url(r'api/', include(api_router.urls))
 ]
