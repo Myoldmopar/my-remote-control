@@ -34,7 +34,7 @@ class VolumeController(object):
         self.mixer.setvolume(100)
 
     def toggle_mute(self):
-        if self.mixer.getmute() == 0:
+        if self.mixer.getmute()[0] == 0:
             self.mixer.setmute(1)
         else:
             self.mixer.setmute(0)

@@ -30,8 +30,8 @@ class VolumeViewSet(viewsets.GenericViewSet):
         return JsonResponse({'status': 'success'}, status=status.HTTP_200_OK)
 
     @list_route(methods=['GET'])
-    def mute(self, request):
-        self.volume.mute()
+    def toggle_mute(self, request):
+        self.volume.toggle_mute()
         return JsonResponse({'status': 'success'}, status=status.HTTP_200_OK)
 
 
