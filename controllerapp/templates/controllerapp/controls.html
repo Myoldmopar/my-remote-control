@@ -13,48 +13,46 @@
     <script src="{% static 'vendors/bower_components/angular/angular.js' %}"></script>
     <script src="{% static 'js/controllerapp.js' %}"></script>
 </head>
-<body ng-app="volumeApp">
-<div ng-controller="volumeController">
-    <div id="wrapper" class="col-md-1 col-xs-4 col-md-offset-1 col-xs-offset-1">
-        <h2>Volume</h2>
-        <div class="row padded">
-            <button class="btn btn-primary btn-lg" ng-click="volumeUp()">
-                Up
-            </button>
-        </div>
-        <div class="row padded">
-            <button class="btn btn-primary btn-lg" ng-click="volumeDown()">
-                Down
-            </button>
-        </div>
-        <div class="row padded">
-            <button class="btn btn-primary btn-lg" ng-click="volumeMute()">
-                Mute
-            </button>
-        </div>
+<body ng-app="controllerApp">
+<div id="wrapper" ng-controller="volumeController" class="col-md-1 col-xs-4 col-md-offset-1 col-xs-offset-1">
+    <h2>Volume</h2>
+    <div class="row padded">
+        <button class="btn btn-primary btn-lg" ng-click="volumeUp()">
+            Up
+        </button>
     </div>
-    <div id="wrapper" class="col-md-1 col-xs-4 col-md-offset-1 col-xs-offset-2">
-        <h2>Pithos</h2>
-        <div class="row padded">
-            <button class="btn btn-success btn-lg" ng-click="openPithos()">
-                Open
-            </button>
-        </div>
-        <div class="row padded">
-            <button class="btn btn-primary btn-lg" ng-click="playPause()">
-                Play/Pause
-            </button>
-        </div>
-        <div class="row padded">
-            <button class="btn btn-primary btn-lg" ng-click="nextSong()">
-                Next Song
-            </button>
-        </div>
-        <div class="row padded">
-            <button class="btn btn-danger btn-lg" ng-click="closePithos()">
-                Close
-            </button>
-        </div>
+    <div class="row padded">
+        <button class="btn btn-primary btn-lg" ng-click="volumeDown()">
+            Down
+        </button>
+    </div>
+    <div class="row padded">
+        <button class="btn btn-primary btn-lg" ng-click="volumeMute()">
+            Mute
+        </button>
+    </div>
+</div>
+<div id="wrapper" ng-controller="mediaController" class="col-md-1 col-xs-4 col-md-offset-1 col-xs-offset-2">
+    <h2>Pithos</h2>
+    <div class="row padded">
+        <button class="btn btn-success btn-lg" ng-click="openPithos()">
+            Open
+        </button>
+    </div>
+    <div class="row padded">
+        <button class="btn btn-primary btn-lg" ng-click="playPause()">
+            Play/Pause
+        </button>
+    </div>
+    <div class="row padded">
+        <button class="btn btn-primary btn-lg" ng-click="nextSong()">
+            Next Song
+        </button>
+    </div>
+    <div class="row padded">
+        <button class="btn btn-danger btn-lg" ng-click="closePithos()">
+            Close
+        </button>
     </div>
 </div>
 </body>
