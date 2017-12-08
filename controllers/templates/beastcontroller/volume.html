@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Volume Controller</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+</head>
+<body ng-app="volumeApp">
+<div ng-controller="volumeController">
+    <div id="wrapper" class="col-md-1 col-xs-6">
+        <h2>Volume</h2>
+        <div class="row padded">
+            <button class="btn btn-primary btn-lg" ng-click="volumeUp()">
+                Volume Up
+            </button>
+        </div>
+        <div class="row padded">
+            <button class="btn btn-primary btn-lg" ng-click="volumeDown()">
+                Volume Down
+            </button>
+        </div>
+        <div class="row padded">
+            <button class="btn btn-danger btn-lg" ng-click="volumeMute()">
+                MUTE
+            </button>
+        </div>
+    </div>
+    <div id="wrapper" class="col-md-1 col-xs-6">
+        <h2>Media</h2>
+        <div class="row padded">
+            <button class="btn btn-success btn-lg" ng-click="openPithos()">
+                Open Pithos
+            </button>
+        </div>
+        <div class="row padded">
+            <button class="btn btn-primary btn-lg" ng-click="playPause()">
+                Play/Pause
+            </button>
+        </div>
+        <div class="row padded">
+            <button class="btn btn-primary btn-lg" ng-click="nextSong()">
+                Next Song
+            </button>
+        </div>
+        <div class="row padded">
+            <button class="btn btn-danger btn-lg" ng-click="closePithos()">
+                Close Pithos
+            </button>
+        </div>
+    </div>
+</div>
+<style>
+    #wrapper {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 10px;
+    }
+    button {
+        width: 100%;
+        font-weight: bold;
+    }
+    .padded {
+        padding-bottom: 10px;
+    }
+</style>
+<script>
+    angular.module('volumeApp', [])
+        .controller('volumeController', ['$scope', '$http', function ($scope, $http) {
+            $scope.count = 0;
+            $scope.volumeUp = function () {
+                $http.get('/api/volume/up/');
+            };
+            $scope.volumeDown = function () {
+                $http.get('/api/volume/down/');
+            };
+            $scope.volumeMute = function () {
+                $http.get('/api/volume/mute/');
+            };
+            $scope.playPause = function () {
+                $http.get('/api/volume/play_pause/');
+            };
+            $scope.nextSong = function () {
+                $http.get('/api/volume/next_song/');
+            };
+            $scope.openPithos = function () {
+                $http.get('/api/volume/open_pithos/');
+            };
+            $scope.closePithos = function () {
+                $http.get('/api/volume/close_pithos/');
+            };
+        }]);
+</script>
+</body>
+</html>
