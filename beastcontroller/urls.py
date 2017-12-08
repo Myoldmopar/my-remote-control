@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework import routers
-from controllers.views import VolumeViewSet, volume_page
+from controllerapp.views import VolumeViewSet, volume_page
 
 api_router = routers.SimpleRouter()
 api_router.register(r'volume', VolumeViewSet, base_name='volume')

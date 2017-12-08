@@ -9,7 +9,7 @@ from controls.volume import MediaController
 
 
 def volume_page(request):
-    return render(request, 'beastcontroller/volume.html', {})
+    return render(request, 'controllerapp/volume.html', {})
 
 
 class VolumeViewSet(viewsets.GenericViewSet):
