@@ -1,0 +1,14 @@
+#wrapper {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+button {
+    width: 100%;
+    font-weight: bold;
+}
+
+.padded {
+    padding-bottom: 10px;
+}
