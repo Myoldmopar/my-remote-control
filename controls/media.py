@@ -1,20 +1,46 @@
-import os
+# import os
+import subprocess
+# import time
+
+# from beastcontroller.settings import BASE_DIR
 
 
 class MediaController(object):
 
     @staticmethod
     def play_pause():
-        os.system("xdotool key XF86AudioPlay")
+        return_code = subprocess.call(['xdotool', 'key', 'XF86AudioPlay'])
+        if return_code == 0:
+            return {'success': True}
+        else:
+            return {'success': False, 'message': "Couldn't toggle play/pause, xdotool exit code: " + str(return_code)}
 
     @staticmethod
     def next_song():
-        os.system("xdotool key XF86AudioNext")
+        return_code = subprocess.call(['xdotool', 'key', 'XF86AudioNext'])
+        if return_code == 0:
+            return {'success': True}
+        else:
+            return {'success': False, 'message': "Couldn't trigger next song, xdotool exit code: " + str(return_code)}
 
     @staticmethod
     def open_pithos():
-        os.system("pithos")
+        # pithos_script = os.path.join(BASE_DIR, 'scripts', 'spawn_pithos.sh')
+        # subprocess.call([pithos_script])
+        # time.sleep(1)
+        # p = subprocess.Popen(['ps', '-A'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        # output, _ = p.communicate()
+        # if 'pithos' in output:
+        #     return {'success': True}
+        # else:
+        #     return {'success': False, 'message': "Couldn't open Pithos, check if it is installed and on PATH"}
+        return {'success': False, 'message': 'Not implemented, couldn\'t get it to properly fork, etc.'}
 
     @staticmethod
     def close_pithos():
-        os.system("killall pithos")
+        # return_code = subprocess.call(['killall', 'pithos'])
+        # if return_code == 0:
+        #     return {'success': True}
+        # else:
+        #     return {'success': False, 'message': "Couldn't kill Pithos, command exit code: " + str(return_code)}
+        return {'success': False, 'message': 'Not implemented, couldn\'t get it to properly fork, etc.'}

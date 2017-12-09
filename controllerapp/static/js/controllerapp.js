@@ -1,17 +1,18 @@
 var app = angular.module('controllerApp', []);
 
 app.controller('volumeController', ['$scope', '$http', function ($scope, $http) {
+    "use strict";
     $scope.volumeUp = function () {
         $http.get('/api/volume/up/').then(
             function(response) {
-                $scope.notification_text = "Volume: " + response.data.new_volume + "%"
+                $scope.notification_text = "Volume: " + response.data.new_volume + "%";
             }
         );
     };
     $scope.volumeDown = function () {
         $http.get('/api/volume/down/').then(
             function(response) {
-                $scope.notification_text = "Volume: " + response.data.new_volume + "%"
+                $scope.notification_text = "Volume: " + response.data.new_volume + "%";
             }
         );
     };
@@ -29,6 +30,7 @@ app.controller('volumeController', ['$scope', '$http', function ($scope, $http) 
 }]);
 
 app.controller('mediaController', ['$scope', '$http', function ($scope, $http) {
+    "use strict";
     $scope.playPause = function () {
         $http.get('/api/media/play_pause/');
     };

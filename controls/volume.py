@@ -1,29 +1,34 @@
 import alsaaudio
 
-from controls.exceptions import ValueOutOfRange
-
 
 class VolumeController(object):
+
+    Unmuted = 0
+    Muted = 1
+
     def __init__(self):
         self.mixer = alsaaudio.Mixer()  # let it throw an exception if needed, caller should catch it
         self._increment = 4
 
-    def get_increment(self):
-        return self._increment
-
-    def set_increment(self, new_increment):
-        if 1 > new_increment > 25:
-            raise ValueOutOfRange("Increment must be between 1 and 20")
-        self._increment = new_increment
-
-    def up_increment(self):
+    def get_volume(self):
         try:
             current_volume = self.mixer.getvolume()[0]
-        except IndexError:
             return {
                 'success': True,
+                'volume': current_volume
+            }
+        except IndexError:
+            return {
+                'success': False,
                 'message': 'Invalid mixer volume retrieval, check permissions and system configuration.'
             }
+
+    def up_increment(self):
+        current_volume = self.get_volume()
+        if not current_volume['success']:
+            return current_volume
+        else:
+            current_volume = current_volume['volume']
         new_volume = current_volume + self._increment
         if new_volume > 100:
             new_volume = 100
@@ -34,16 +39,15 @@ class VolumeController(object):
                 'success': False,
                 'message': 'Could not set volume, check permissions and system configuration'
             }
+        self.set_mute_status(new_mute_status=VolumeController.Unmuted)
         return {'success': 'success', 'new_volume': new_volume}
 
     def down_increment(self):
-        try:
-            current_volume = self.mixer.getvolume()[0]
-        except IndexError:
-            return {
-                'success': True,
-                'message': 'Invalid mixer volume retrieval, check permissions and system configuration.'
-            }
+        current_volume = self.get_volume()
+        if not current_volume['success']:
+            return current_volume
+        else:
+            current_volume = current_volume['volume']
         new_volume = current_volume - self._increment
         if new_volume < 0:
             new_volume = 0
@@ -56,23 +60,25 @@ class VolumeController(object):
             }
         return {'success': 'success', 'new_volume': new_volume}
 
-    def max_volume(self):
-        return self.mixer.setvolume(100)
-
-    def toggle_mute(self):
+    def set_mute_status(self, new_mute_status=-1):
+        if new_mute_status == VolumeController.Unmuted:
+            current_mute_state = VolumeController.Muted
+        elif new_mute_status == VolumeController.Muted:
+            current_mute_state = VolumeController.Unmuted
+        else:
+            try:
+                current_mute_state = self.mixer.getmute()[0]
+            except IndexError:
+                return {
+                    'success': False,
+                    'message': 'Invalid mixer mute state retrieval, check permissions and system configuration.'
+                }
         try:
-            current_mute_state = self.mixer.getmute()[0]
-        except IndexError:
-            return {
-                'success': False,
-                'message': 'Invalid mixer mute state retrieval, check permissions and system configuration.'
-            }
-        try:
-            if current_mute_state == 0:
-                self.mixer.setmute(1)
+            if current_mute_state == VolumeController.Unmuted:
+                self.mixer.setmute(VolumeController.Muted)
                 return {'success': 'success', 'muted': True}
             else:
-                self.mixer.setmute(0)
+                self.mixer.setmute(VolumeController.Unmuted)
                 return {'success': 'success', 'muted': False}
         except Exception:
             return {
