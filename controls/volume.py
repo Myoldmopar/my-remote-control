@@ -40,7 +40,7 @@ class VolumeController(object):
                 'message': 'Could not set volume, check permissions and system configuration'
             }
         self.set_mute_status(new_mute_status=VolumeController.Unmuted)
-        return {'success': 'success', 'new_volume': new_volume}
+        return {'success': True, 'new_volume': new_volume}
 
     def down_increment(self):
         current_volume = self.get_volume()
@@ -58,7 +58,7 @@ class VolumeController(object):
                 'success': False,
                 'message': 'Could not set volume, check permissions and system configuration'
             }
-        return {'success': 'success', 'new_volume': new_volume}
+        return {'success': True, 'new_volume': new_volume}
 
     def set_mute_status(self, new_mute_status=-1):
         if new_mute_status == VolumeController.Unmuted:
@@ -76,10 +76,10 @@ class VolumeController(object):
         try:
             if current_mute_state == VolumeController.Unmuted:
                 self.mixer.setmute(VolumeController.Muted)
-                return {'success': 'success', 'muted': True}
+                return {'success': True, 'muted': True}
             else:
                 self.mixer.setmute(VolumeController.Unmuted)
-                return {'success': 'success', 'muted': False}
+                return {'success': True, 'muted': False}
         except Exception:
             return {
                 'success': False,
