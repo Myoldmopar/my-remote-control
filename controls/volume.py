@@ -75,7 +75,7 @@ class VolumeController(object):
 
     def up_increment(self):
         """
-        This function increments the volume of the system.  If the sound was muted, this will un-mute it.
+        This function increments the volume of the system.  If the sound was muted, this will unmute it.
 
         :return: On success, it returns a SuccessfulVolumeReturnType with the current volume;
                  on failure it returns a FailureReturnTypeBase.
