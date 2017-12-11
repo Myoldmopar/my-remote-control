@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from controls import volume
+# from controls import volume
 
 
 class TestVolumeController(TestCase):
