@@ -1,11 +1,11 @@
-from rest_framework import viewsets
-from rest_framework.decorators import list_route
-from rest_framework import status
 from django.http import JsonResponse
 from django.shortcuts import render
+from rest_framework import status
+from rest_framework import viewsets
+from rest_framework.decorators import list_route
 
-from controls.volume import VolumeController
 from controls.media import MediaController
+from controls.volume import VolumeController
 
 
 def control_page(request):

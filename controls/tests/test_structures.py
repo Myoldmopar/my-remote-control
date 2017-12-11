@@ -4,7 +4,6 @@ from controls import structures
 
 
 class TestSuccessfulReturnTypeBase(TestCase):
-
     def setUp(self):
         self.s = structures.SuccessfulReturnTypeBase()
 
@@ -20,7 +19,6 @@ class TestSuccessfulReturnTypeBase(TestCase):
 
 
 class TestFailureReturnTypeBaseNoMessage(TestCase):
-
     def setUp(self):
         self.s = structures.FailureReturnTypeBase()
 
@@ -36,7 +34,6 @@ class TestFailureReturnTypeBaseNoMessage(TestCase):
 
 
 class TestFailureReturnTypeBaseWithMessage(TestCase):
-
     def setUp(self):
         self.s = structures.FailureReturnTypeBase(message='Error: Tosche Station is out of power converters.')
 
