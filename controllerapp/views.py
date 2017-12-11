@@ -21,25 +21,25 @@ class VolumeViewSet(viewsets.GenericViewSet):
     def up(self, request):
         response = self.volume.up_increment()
         if response.success:
-            return JsonResponse(response, status=status.HTTP_200_OK)
+            return JsonResponse(response.to_dict(), status=status.HTTP_200_OK)
         else:
-            return JsonResponse(response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return JsonResponse(response.to_dict(), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     @list_route(methods=['GET'])
     def down(self, request):
         response = self.volume.down_increment()
         if response.success:
-            return JsonResponse(response, status=status.HTTP_200_OK)
+            return JsonResponse(response.to_dict(), status=status.HTTP_200_OK)
         else:
-            return JsonResponse(response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return JsonResponse(response.to_dict(), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     @list_route(methods=['GET'])
     def toggle_mute(self, request):
         response = self.volume.set_mute_status()
         if response.success:
-            return JsonResponse(response, status=status.HTTP_200_OK)
+            return JsonResponse(response.to_dict(), status=status.HTTP_200_OK)
         else:
-            return JsonResponse(response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return JsonResponse(response.to_dict(), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class MediaViewSet(viewsets.GenericViewSet):
@@ -51,30 +51,30 @@ class MediaViewSet(viewsets.GenericViewSet):
     def play_pause(self, request):
         response = self.media.play_pause()
         if response.success:
-            return JsonResponse(response, status=status.HTTP_200_OK)
+            return JsonResponse(response.to_dict(), status=status.HTTP_200_OK)
         else:
-            return JsonResponse(response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return JsonResponse(response.to_dict(), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     @list_route(methods=['GET'])
     def next_song(self, request):
         response = self.media.next_song()
         if response.success:
-            return JsonResponse(response, status=status.HTTP_200_OK)
+            return JsonResponse(response.to_dict(), status=status.HTTP_200_OK)
         else:
-            return JsonResponse(response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return JsonResponse(response.to_dict(), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     @list_route(methods=['GET'])
     def open_pithos(self, request):
         response = self.media.open_pithos()
         if response.success:
-            return JsonResponse(response, status=status.HTTP_200_OK)
+            return JsonResponse(response.to_dict(), status=status.HTTP_200_OK)
         else:
-            return JsonResponse(response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return JsonResponse(response.to_dict(), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     @list_route(methods=['GET'])
     def close_pithos(self, request):
         response = self.media.close_pithos()
         if response.success:
-            return JsonResponse(response, status=status.HTTP_200_OK)
+            return JsonResponse(response.to_dict(), status=status.HTTP_200_OK)
         else:
-            return JsonResponse(response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return JsonResponse(response.to_dict(), status=status.HTTP_500_INTERNAL_SERVER_ERROR)

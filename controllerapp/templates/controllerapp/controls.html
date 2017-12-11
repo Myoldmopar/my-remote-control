@@ -34,6 +34,22 @@
 
 <body ng-app="controllerApp">
 
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div>
+            <a class="navbar-brand" href="#">
+                <img alt="Brand" style="height: 100%" src="{% static 'images/remote.png' %}">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="{% url 'swagger' %}">API</a></li>
+                <li><a href="#">ReadTheDocs</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <div ng-controller="remoteControlController">
 
     <div id="wrapper" class="col-md-1 col-xs-4 col-md-offset-1 col-xs-offset-1">

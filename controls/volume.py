@@ -4,15 +4,26 @@ from controls.structures import SuccessfulReturnTypeBase, FailureReturnTypeBase
 
 
 class SuccessfulVolumeReturnType(SuccessfulReturnTypeBase):
+
     def __init__(self, volume):
         super(SuccessfulVolumeReturnType, self).__init__()
         self.volume = volume
+
+    def to_dict(self):
+        base_dict = super(SuccessfulVolumeReturnType, self).to_dict()
+        base_dict['volume'] = self.volume
+        return base_dict
 
 
 class SuccessfulMuteReturnType(SuccessfulReturnTypeBase):
     def __init__(self, muted):
         super(SuccessfulMuteReturnType, self).__init__()
         self.muted = muted
+
+    def to_dict(self):
+        base_dict = super(SuccessfulMuteReturnType, self).to_dict()
+        base_dict['muted'] = self.muted
+        return base_dict
 
 
 class VolumeController(object):

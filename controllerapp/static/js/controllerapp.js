@@ -4,12 +4,12 @@ app.controller('remoteControlController', ['$scope', '$http', 'hotkeys', functio
     "use strict";
     $scope.notification_text = "Remote Control Initialized";
     $scope.errorResponseHandler = function (error_response) {
-        $scope.notification_text = "ERROR: " + response.data.message;
+        $scope.notification_text = "ERROR: " + error_response.data.message;
     };
     $scope.volumeUp = function () {
         $http.get('/api/volume/up/').then(
             function (response) {
-                $scope.notification_text = "Volume: " + response.data.new_volume + "%";
+                $scope.notification_text = "Volume: " + response.data.volume + "%";
             },
             $scope.errorResponseHandler
         );
@@ -17,7 +17,7 @@ app.controller('remoteControlController', ['$scope', '$http', 'hotkeys', functio
     $scope.volumeDown = function () {
         $http.get('/api/volume/down/').then(
             function (response) {
-                $scope.notification_text = "Volume: " + response.data.new_volume + "%";
+                $scope.notification_text = "Volume: " + response.data.volume + "%";
             },
             $scope.errorResponseHandler
         );
