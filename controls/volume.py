@@ -16,7 +16,6 @@ class SuccessfulMuteReturnType(SuccessfulReturnTypeBase):
 
 
 class VolumeController(object):
-
     Unmuted = 0
     Muted = 1
 

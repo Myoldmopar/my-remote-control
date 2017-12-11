@@ -1,13 +1,14 @@
 # import os
 import subprocess
-# import time
 
 # from beastcontroller.settings import BASE_DIR
 from controls.structures import SuccessfulReturnTypeBase, FailureReturnTypeBase
 
 
-class MediaController(object):
+# import time
 
+
+class MediaController(object):
     @staticmethod
     def play_pause():
         return_code = subprocess.call(['xdotool', 'key', 'XF86AudioPlay'])
