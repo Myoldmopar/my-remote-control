@@ -8,14 +8,14 @@ from controls import volume
 
 class TestVolumeController(TestCase):
 
-    @unittest.skipIf("TRAVIS" in os.environ and os.environ["TRAVIS"] == "true", "Skipping this test on Travis CI.")
+    @unittest.skipIf("CI" in os.environ, "Skipping this test on Travis CI.")
     def test_instantiation(self):  # pragma: no cover
         try:
             volume.VolumeController()
         except Exception:
             self.fail('Could not instantiate VolumeController, check OS is Linux and alsa is in place.')
 
-    @unittest.skipIf("TRAVIS" in os.environ and os.environ["TRAVIS"] == "true", "Skipping this test on Travis CI.")
+    @unittest.skipIf("CI" in os.environ, "Skipping this test on Travis CI.")
     def test_get_volume(self):  # pragma: no cover
         v = volume.VolumeController()
         vol = v.get_volume()
