@@ -34,55 +34,61 @@
 
 <body ng-app="controllerApp">
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default">
     <div class="container-fluid">
-        <div>
-            <a class="navbar-brand" href="#">
-                <img alt="Brand" style="height: 100%" src="{% static 'images/remote.png' %}">
-            </a>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                HELLO
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
         </div>
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li><a href="{% url 'swagger' %}">API</a></li>
-                <li><a href="#">ReadTheDocs</a></li>
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
             </ul>
         </div>
-    </div>
+    </div><!-- /.container-fluid -->
 </nav>
+
 
 <div ng-controller="remoteControlController">
 
     <div id="wrapper" class="col-md-1 col-xs-4 col-md-offset-1 col-xs-offset-1">
         <h2>Volume</h2>
         <div class="row padded">
-            <button class="btn btn-primary btn-lg" ng-click="volumeUp()">Up</button>
+            <button class="btn btn-primary btn-lg fullwidthboldbutton" ng-click="volumeUp()">Up</button>
         </div>
         <div class="row padded">
-            <button class="btn btn-primary btn-lg" ng-click="volumeDown()">Down</button>
+            <button class="btn btn-primary btn-lg fullwidthboldbutton" ng-click="volumeDown()">Down</button>
         </div>
         <div class="row padded">
-            <button class="btn btn-primary btn-lg" ng-click="volumeMute()">Mute</button>
+            <button class="btn btn-primary btn-lg fullwidthboldbutton" ng-click="volumeMute()">Mute</button>
         </div>
     </div>
 
     <div id="wrapper" class="col-md-1 col-xs-4 col-md-offset-1 col-xs-offset-2">
         <h2>Media</h2>
         <div class="row padded">
-            <button class="btn btn-primary btn-lg" ng-click="playPause()">Play/Pause</button>
+            <button class="btn btn-primary btn-lg fullwidthboldbutton" ng-click="playPause()">Play/Pause</button>
         </div>
         <div class="row padded">
-            <button class="btn btn-primary btn-lg" ng-click="nextSong()">Next Song</button>
+            <button class="btn btn-primary btn-lg fullwidthboldbutton" ng-click="nextSong()">Next Song</button>
         </div>
         <div class="row padded">
-            <button class="btn btn-success btn-lg" ng-disabled="true" ng-click="openPithos()">Open</button>
+            <button class="btn btn-success btn-lg fullwidthboldbutton" ng-disabled="true" ng-click="openPithos()">Open
+            </button>
         </div>
         <div class="row padded">
-            <button class="btn btn-danger btn-lg" ng-disabled="true" ng-click="closePithos()">Close</button>
+            <button class="btn btn-danger btn-lg fullwidthboldbutton" ng-disabled="true" ng-click="closePithos()">
+                Close
+            </button>
         </div>
     </div>
 
     <div class="row padded">
-        <input class="notify-bar form-control" type="text" ng-model="notification_text" value="" readonly="readonly"/>
+        <input class="notify-bar form-control bottomstatusbar" type="text" ng-model="notification_text" value=""
+               readonly="readonly"/>
     </div>
 
 </div>
