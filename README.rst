@@ -4,6 +4,13 @@ My Remote Control
 This repo is the Django-backed, Angular-fronted website for my beast's remote control.
 Honestly, this is mostly just an exercise in refining my web skills, but will make a nice site/app anyway.
 
+Documentation |docimage|_
+-------------------------
+
+Documentation is hosted on [ReadTheDocs](http://solar-calculations.readthedocs.org/en/latest/).
+To build the documentation, enter the docs/ subdirectory and execute `make html`; then open `/docs/_build/html/index.html` to see the documentation.
+The API also has built in Swagger documentation, at the `/swagger/` endpoint.
+
 Testing |tstimage|_
 -------------------
 
@@ -26,3 +33,6 @@ After testing is complete, the code coverage status for those tests are tracked 
 
 .. |covimage| image:: https://coveralls.io/repos/github/Myoldmopar/my-remote-control/badge.svg?branch=master
 .. _covimage: https://coveralls.io/github/Myoldmopar/my-remote-control?branch=master
+
+.. |docimage| image:: https://readthedocs.org/projects/solar-calculations/badge/?version=latest
+.. _docimage: http://solar-calculations.readthedocs.org/en/latest/
