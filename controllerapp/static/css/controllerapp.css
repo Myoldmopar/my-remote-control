@@ -1,28 +1,4 @@
-#wrapper {
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.fullwidthboldbutton {
-    width: 100%;
+.bottom-padded-button {
+    padding-bottom: 25px;
     font-weight: bold;
-}
-
-.bottomstatusbar {
-    width: 100%;
-    font-weight: bold;
-    text-align: center;
-}
-
-.padded {
-    padding-bottom: 10px;
-}
-
-.notify-bar {
-    position: fixed;
-    bottom: 5px;
-    left: 2%;
-    width: 96%;
-    z-index: 1000;
 }
