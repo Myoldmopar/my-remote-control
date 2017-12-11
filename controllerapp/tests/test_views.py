@@ -1,5 +1,6 @@
 import json
 import os
+from alsaaudio import ALSAAudioError
 
 from django.core.urlresolvers import reverse
 from django.test import TestCase
@@ -18,22 +19,28 @@ class SwaggerViewTests(TestCase):
 
 class TestVolumeViewSet(TestCase):
     def test_up(self):
-        response = self.client.get(reverse('swagger'))
+        endpoint_name = 'volume-up'
         if os.environ.get('TRAVIS') is 'true':
-            self.assertEqual(response.status_code, 500)
+            with self.assertRaises(ALSAAudioError):
+                self.client.get(reverse(endpoint_name))
         else:
+            response = self.client.get(reverse(endpoint_name))
             self.assertEqual(response.status_code, 200)
 
     def test_down(self):
-        response = self.client.get(reverse('swagger'))
+        endpoint_name = 'volume-down'
         if os.environ.get('TRAVIS') is 'true':
-            self.assertEqual(response.status_code, 500)
+            with self.assertRaises(ALSAAudioError):
+                self.client.get(reverse(endpoint_name))
         else:
+            response = self.client.get(reverse(endpoint_name))
             self.assertEqual(response.status_code, 200)
 
     def test_mute(self):
-        response = self.client.get(reverse('swagger'))
+        endpoint_name = 'volume-toggle-mute'
         if os.environ.get('TRAVIS') is 'true':
-            self.assertEqual(response.status_code, 500)
+            with self.assertRaises(ALSAAudioError):
+                self.client.get(reverse(endpoint_name))
         else:
+            response = self.client.get(reverse(endpoint_name))
             self.assertEqual(response.status_code, 200)

@@ -1,0 +1,6 @@
+alsamixer
+indices
+unmute
+unmuted
+unpause
+xdotool
