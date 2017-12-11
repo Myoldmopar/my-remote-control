@@ -1,5 +1,5 @@
 import os
-from unittest import skipIf
+import unittest
 
 from django.test import TestCase
 
@@ -7,17 +7,15 @@ from controls import volume
 
 
 class TestVolumeController(TestCase):
-    def test_a(self):
-        pass
 
-    @skipIf(os.environ.get('TRAVIS') is 'true', 'Cannot run this test on Travis.')
+    @unittest.skipIf("TRAVIS" in os.environ and os.environ["TRAVIS"] == "true", "Skipping this test on Travis CI.")
     def test_instantiation(self):  # pragma: no cover
         try:
             volume.VolumeController()
         except Exception:
             self.fail('Could not instantiate VolumeController, check OS is Linux and alsa is in place.')
 
-    @skipIf(os.environ.get('TRAVIS') is 'true', 'Cannot run this test on Travis.')
+    @unittest.skipIf("TRAVIS" in os.environ and os.environ["TRAVIS"] == "true", "Skipping this test on Travis CI.")
     def test_get_volume(self):  # pragma: no cover
         v = volume.VolumeController()
         vol = v.get_volume()
