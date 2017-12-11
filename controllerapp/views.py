@@ -62,19 +62,3 @@ class MediaViewSet(viewsets.GenericViewSet):
             return JsonResponse(response.to_dict(), status=status.HTTP_200_OK)
         else:
             return JsonResponse(response.to_dict(), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-    @list_route(methods=['GET'])
-    def open_pithos(self, request):
-        response = self.media.open_pithos()
-        if response.success:
-            return JsonResponse(response.to_dict(), status=status.HTTP_200_OK)
-        else:
-            return JsonResponse(response.to_dict(), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-    @list_route(methods=['GET'])
-    def close_pithos(self, request):
-        response = self.media.close_pithos()
-        if response.success:
-            return JsonResponse(response.to_dict(), status=status.HTTP_200_OK)
-        else:
-            return JsonResponse(response.to_dict(), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
