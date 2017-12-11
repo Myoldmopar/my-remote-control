@@ -17,6 +17,7 @@
     <!-- External Style Dependencies -->
     <link rel="stylesheet" href="{% static 'vendors/bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'vendors/bower_components/angular-hotkeys/build/hotkeys.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/bower_components/components-font-awesome/css/font-awesome.min.css' %}">
 
     <!-- Local Style Files -->
     <link rel="stylesheet" href="{% static 'css/controllerapp.css' %}">
@@ -38,42 +39,49 @@
 
     <div class="col-md-3 col-xs-10 col-md-offset-1 col-xs-offset-1">
         <div class="row">
-            <h2>Volume</h2>
+            <h2>Controls</h2>
         </div>
-        <div class="row">
+        <div class="row" style="padding-bottom:5px;">
             <div class="btn-group btn-group-justified">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-primary" ng-click="volumeUp()">Up</button>
+                    <button type="button" class="btn btn-primary btn-lg" ng-click="volumeUp()">
+                        <span class="glyphicon glyphicon-volume-up"></span>
+                    </button>
                 </div>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-primary" ng-click="volumeDown()">Down</button>
+                    <button type="button" class="btn btn-primary btn-lg" ng-click="volumeDown()">
+                        <span class="glyphicon glyphicon-volume-down"></span>
+                    </button>
                 </div>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-primary" ng-click="volumeMute()">Mute</button>
+                    <button type="button" class="btn btn-primary btn-lg" ng-click="volumeMute()">
+                        <span class="glyphicon glyphicon-volume-off"></span>
+                    </button>
                 </div>
             </div>
         </div>
         <div class="row">
-            <h2>Media</h2>
-        </div>
-        <div class="row">
             <div class="btn-group btn-group-justified">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-primary" ng-click="playPause()">Play/Pause</button>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary" ng-click="nextSong()">Next Song</button>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-success" ng-disabled="true" ng-click="openPithos()">
-                        Open
+                    <button type="button" class="btn btn-primary btn-lg" ng-click="playPause()">
+                        <span class="glyphicon glyphicon-play"></span>
                     </button>
                 </div>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-danger" ng-disabled="true" ng-click="closePithos()">
-                        Close
+                    <button type="button" class="btn btn-primary btn-lg" ng-click="nextSong()">
+                        <span class="glyphicon glyphicon-fast-forward"></span>
                     </button>
                 </div>
+{#                <div class="btn-group">#}
+{#                    <button type="button" class="btn btn-success" ng-disabled="true" ng-click="openPithos()">#}
+{#                        Open#}
+{#                    </button>#}
+{#                </div>#}
+{#                <div class="btn-group">#}
+{#                    <button type="button" class="btn btn-danger" ng-disabled="true" ng-click="closePithos()">#}
+{#                        Close#}
+{#                    </button>#}
+{#                </div>#}
             </div>
         </div>
         <div class="row">
