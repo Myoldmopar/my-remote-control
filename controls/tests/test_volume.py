@@ -12,11 +12,9 @@ class TestVolumeController(TestCase):
     def test_get_volume(self):
         v = volume.VolumeController()
         vol = v.get_volume()
-        self.assertIn('success', vol)
-        self.assertIn('volume', vol)
-        self.assertTrue(vol['success'])
+        self.assertTrue(vol.success)
         try:
-            volume_value = vol['volume']
+            volume_value = vol.volume
             self.assertIsInstance(volume_value, int)
         except IndexError:
             self.fail('Something wrong with volume response in get_volume, some underlying Mixer problem.')

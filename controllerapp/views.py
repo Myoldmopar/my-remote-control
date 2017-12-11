@@ -4,7 +4,6 @@ from rest_framework import status
 from django.http import JsonResponse
 from django.shortcuts import render
 
-
 from controls.volume import VolumeController
 from controls.media import MediaController
 
@@ -14,7 +13,6 @@ def control_page(request):
 
 
 class VolumeViewSet(viewsets.GenericViewSet):
-
     def __init__(self):
         super(VolumeViewSet, self).__init__()
         self.volume = VolumeController()
@@ -22,7 +20,7 @@ class VolumeViewSet(viewsets.GenericViewSet):
     @list_route(methods=['GET'])
     def up(self, request):
         response = self.volume.up_increment()
-        if response['success']:
+        if response.success:
             return JsonResponse(response, status=status.HTTP_200_OK)
         else:
             return JsonResponse(response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -30,7 +28,7 @@ class VolumeViewSet(viewsets.GenericViewSet):
     @list_route(methods=['GET'])
     def down(self, request):
         response = self.volume.down_increment()
-        if response['success']:
+        if response.success:
             return JsonResponse(response, status=status.HTTP_200_OK)
         else:
             return JsonResponse(response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -38,14 +36,13 @@ class VolumeViewSet(viewsets.GenericViewSet):
     @list_route(methods=['GET'])
     def toggle_mute(self, request):
         response = self.volume.set_mute_status()
-        if response['success']:
+        if response.success:
             return JsonResponse(response, status=status.HTTP_200_OK)
         else:
             return JsonResponse(response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class MediaViewSet(viewsets.GenericViewSet):
-
     def __init__(self):
         super(MediaViewSet, self).__init__()
         self.media = MediaController()
@@ -53,7 +50,7 @@ class MediaViewSet(viewsets.GenericViewSet):
     @list_route(methods=['GET'])
     def play_pause(self, request):
         response = self.media.play_pause()
-        if response['success']:
+        if response.success:
             return JsonResponse(response, status=status.HTTP_200_OK)
         else:
             return JsonResponse(response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -61,7 +58,7 @@ class MediaViewSet(viewsets.GenericViewSet):
     @list_route(methods=['GET'])
     def next_song(self, request):
         response = self.media.next_song()
-        if response['success']:
+        if response.success:
             return JsonResponse(response, status=status.HTTP_200_OK)
         else:
             return JsonResponse(response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -69,7 +66,7 @@ class MediaViewSet(viewsets.GenericViewSet):
     @list_route(methods=['GET'])
     def open_pithos(self, request):
         response = self.media.open_pithos()
-        if response['success']:
+        if response.success:
             return JsonResponse(response, status=status.HTTP_200_OK)
         else:
             return JsonResponse(response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -77,7 +74,7 @@ class MediaViewSet(viewsets.GenericViewSet):
     @list_route(methods=['GET'])
     def close_pithos(self, request):
         response = self.media.close_pithos()
-        if response['success']:
+        if response.success:
             return JsonResponse(response, status=status.HTTP_200_OK)
         else:
             return JsonResponse(response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

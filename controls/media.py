@@ -3,6 +3,7 @@ import subprocess
 # import time
 
 # from beastcontroller.settings import BASE_DIR
+from controls.structures import SuccessfulReturnTypeBase, FailureReturnTypeBase
 
 
 class MediaController(object):
@@ -11,17 +12,17 @@ class MediaController(object):
     def play_pause():
         return_code = subprocess.call(['xdotool', 'key', 'XF86AudioPlay'])
         if return_code == 0:
-            return {'success': True}
+            return SuccessfulReturnTypeBase()
         else:
-            return {'success': False, 'message': "Couldn't toggle play/pause, xdotool exit code: " + str(return_code)}
+            return FailureReturnTypeBase('Couldn\'t toggle play/pause, xdotool exit code: ' + str(return_code))
 
     @staticmethod
     def next_song():
         return_code = subprocess.call(['xdotool', 'key', 'XF86AudioNext'])
         if return_code == 0:
-            return {'success': True}
+            return SuccessfulReturnTypeBase()
         else:
-            return {'success': False, 'message': "Couldn't trigger next song, xdotool exit code: " + str(return_code)}
+            return FailureReturnTypeBase('Couldn\'t trigger next song, xdotool exit code: ' + str(return_code))
 
     @staticmethod
     def open_pithos():
@@ -34,7 +35,7 @@ class MediaController(object):
         #     return {'success': True}
         # else:
         #     return {'success': False, 'message': "Couldn't open Pithos, check if it is installed and on PATH"}
-        return {'success': False, 'message': 'Not implemented, couldn\'t get it to properly fork, etc.'}
+        return FailureReturnTypeBase('Not implemented, couldn\'t get it to properly fork, etc.')
 
     @staticmethod
     def close_pithos():
@@ -43,4 +44,4 @@ class MediaController(object):
         #     return {'success': True}
         # else:
         #     return {'success': False, 'message': "Couldn't kill Pithos, command exit code: " + str(return_code)}
-        return {'success': False, 'message': 'Not implemented, couldn\'t get it to properly fork, etc.'}
+        return FailureReturnTypeBase('Not implemented, couldn\'t get it to properly fork, etc.')
