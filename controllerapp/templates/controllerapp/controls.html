@@ -1,20 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
+    <!-- Site settings -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Volume Controller</title>
+
+    <!-- Tell Django to load up all the static assets -->
     {% load static %}
+
+    <!-- Create link to application icon -->
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+
+    <!-- External Style Dependencies -->
     <link rel="stylesheet" href="{% static 'vendors/bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/bower_components/angular-hotkeys/build/hotkeys.min.css' %}">
+
+    <!-- Local Style Files -->
     <link rel="stylesheet" href="{% static 'css/controllerapp.css' %}">
+
+    <!-- External JS Dependencies -->
     <script src="{% static 'vendors/bower_components/jquery/dist/jquery.min.js' %}"></script>
     <script src="{% static 'vendors/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'vendors/bower_components/angular/angular.js' %}"></script>
+    <script src="{% static 'vendors/bower_components/angular/angular.min.js' %}"></script>
+    <script src="{% static 'vendors/bower_components/angular-hotkeys/build/hotkeys.min.js' %}"></script>
+
+    <!-- Local JS Files -->
     <script src="{% static 'js/controllerapp.js' %}"></script>
+
 </head>
+
 <body ng-app="controllerApp">
+
 <div ng-controller="remoteControlController">
+
     <div id="wrapper" class="col-md-1 col-xs-4 col-md-offset-1 col-xs-offset-1">
         <h2>Volume</h2>
         <div class="row padded">
@@ -27,6 +48,7 @@
             <button class="btn btn-primary btn-lg" ng-click="volumeMute()">Mute</button>
         </div>
     </div>
+
     <div id="wrapper" class="col-md-1 col-xs-4 col-md-offset-1 col-xs-offset-2">
         <h2>Media</h2>
         <div class="row padded">
@@ -42,9 +64,13 @@
             <button class="btn btn-danger btn-lg" ng-disabled="true" ng-click="closePithos()">Close</button>
         </div>
     </div>
+
     <div class="row padded">
-        <input class="form-control" style="position: fixed; bottom: 5px; left:2%; width: 96%; z-index: 1000;" type="text" ng-model="notification_text" value="" readonly="readonly"/>
+        <input class="notify-bar form-control" type="text" ng-model="notification_text" value="" readonly="readonly"/>
     </div>
+
 </div>
+
 </body>
+
 </html>

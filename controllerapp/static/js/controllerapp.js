@@ -1,6 +1,6 @@
-var app = angular.module('controllerApp', []);
+var app = angular.module('controllerApp', ['cfp.hotkeys']);
 
-app.controller('remoteControlController', ['$scope', '$http', function ($scope, $http) {
+app.controller('remoteControlController', ['$scope', '$http', 'hotkeys', function ($scope, $http, hotkeys) {
     "use strict";
     $scope.notification_text = "Remote Control Initialized";
     $scope.errorResponseHandler = function (error_response) {
@@ -56,4 +56,31 @@ app.controller('remoteControlController', ['$scope', '$http', function ($scope, 
     $scope.closePithos = function () {
         $http.get('/api/media/close_pithos/');
     };
+    hotkeys.bindTo($scope)
+        .add({
+            combo: 'j',
+            description: 'Volume Down (Think VI)',
+            callback: $scope.volumeDown
+        })
+        .add({
+            combo: 'k',
+            description: 'Volume Up (Think VI)',
+            callback: $scope.volumeUp
+        })
+        .add({
+            combo: 'm',
+            description: 'Mute',
+            callback: $scope.volumeMute
+        })
+        .add({
+            combo: 'n',
+            description: 'Next Song',
+            callback: $scope.nextSong
+        })
+        .add({
+            combo: 'p',
+            description: 'Play/Pause',
+            callback: $scope.playPause
+        });
+
 }]);
