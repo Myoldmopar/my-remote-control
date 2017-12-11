@@ -29,4 +29,7 @@ class FailureReturnTypeBase(object):
 
     def to_dict(self):
         """Utility function to convert this structure into a dictionary"""
-        return {'success': self.success, 'message': self.message}
+        d = {'success': self.success}
+        if self.message:
+            d['message'] = self.message
+        return d

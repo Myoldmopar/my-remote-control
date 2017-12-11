@@ -11,14 +11,14 @@ class TestVolumeController(TestCase):
         pass
 
     @skipIf(os.environ.get('TRAVIS') is None, 'Cannot run this test on Travis.')
-    def test_instantiation(self):
+    def test_instantiation(self):  # pragma: no cover
         try:
             volume.VolumeController()
         except Exception:
             self.fail('Could not instantiate VolumeController, check OS is Linux and alsa is in place.')
 
     @skipIf(os.environ.get('TRAVIS') is None, 'Cannot run this test on Travis.')
-    def test_get_volume(self):
+    def test_get_volume(self):  # pragma: no cover
         v = volume.VolumeController()
         vol = v.get_volume()
         self.assertTrue(vol.success)
