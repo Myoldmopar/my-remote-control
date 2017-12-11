@@ -44,7 +44,7 @@ extensions = ['sphinx.ext.autodoc',
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
-spelling_word_list_filename='spelling_wordlist.txt'
+spelling_word_list_filename = 'spelling_wordlist.txt'
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
