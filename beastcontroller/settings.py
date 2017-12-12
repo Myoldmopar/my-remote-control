@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'pin_passcode',
     'rest_framework',
     'rest_framework_swagger',
     'controllerapp.apps.ControllersConfig'
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'pin_passcode.middleware.PinPasscodeMiddleware',
 ]
 
 ROOT_URLCONF = 'beastcontroller.urls'
@@ -127,3 +129,12 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
+
+# the passcode required to login as the above user, using 0-9 and '#'
+if 'HOME' not in os.environ:  # pragma no cover
+    PIN_PASSCODE_PIN = '1234'
+else:  # pragma no cover
+    pin_passcode_file = os.path.join(os.environ['HOME'], '.pin_passcode_pin')
+    if not os.path.exists(pin_passcode_file):
+        print("***You need a ~/.pin_passcode_pin file with your login passcode***")
+    PIN_PASSCODE_PIN = open(pin_passcode_file, 'r').read().strip()

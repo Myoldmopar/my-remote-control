@@ -1,4 +1,4 @@
-import subprocess
+from subprocess import call, PIPE, STDOUT
 
 from controls.structures import SuccessfulReturnTypeBase, FailureReturnTypeBase
 
@@ -17,7 +17,7 @@ class MediaController(object):
 
         :return: On success, this function returns SuccessfulReturnTypeBase; a FailureReturnTypeBase on failure
         """
-        return_code = subprocess.call(['xdotool', 'key', 'XF86AudioPlay'])
+        return_code = call(['xdotool', 'key', 'XF86AudioPlay'], stdin=PIPE, stdout=PIPE, stderr=STDOUT)
         if return_code == 0:
             return SuccessfulReturnTypeBase()
         else:
@@ -30,7 +30,7 @@ class MediaController(object):
 
         :return: On success, this function returns SuccessfulReturnTypeBase; a FailureReturnTypeBase on failure
         """
-        return_code = subprocess.call(['xdotool', 'key', 'XF86AudioNext'])
+        return_code = call(['xdotool', 'key', 'XF86AudioNext'], stdin=PIPE, stdout=PIPE, stderr=STDOUT)
         if return_code == 0:
             return SuccessfulReturnTypeBase()
         else:

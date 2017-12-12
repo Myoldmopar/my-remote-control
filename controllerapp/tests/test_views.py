@@ -2,11 +2,16 @@ import json
 import os
 from alsaaudio import ALSAAudioError
 
+from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 
 
 class ControlsViewTests(TestCase):
+    def setUp(self):
+        self.u = User.objects.create_user(username='username', password='password')
+        self.client.login(username='username', password='password')
+
     def test_control_page(self):
         endpoint_name = 'controls'
         response = self.client.get(reverse(endpoint_name))
@@ -14,6 +19,10 @@ class ControlsViewTests(TestCase):
 
 
 class SwaggerViewTests(TestCase):
+    def setUp(self):
+        self.u = User.objects.create_user(username='username', password='password')
+        self.client.login(username='username', password='password')
+
     def test_swagger(self):
         endpoint_name = 'swagger'
         if 'CI' in os.environ:
@@ -30,6 +39,10 @@ class SwaggerViewTests(TestCase):
 
 
 class TestVolumeViewSet(TestCase):
+    def setUp(self):
+        self.u = User.objects.create_user(username='username', password='password')
+        self.client.login(username='username', password='password')
+
     def test_up(self):
         endpoint_name = 'volume-up'
         if 'CI' in os.environ:
@@ -59,10 +72,14 @@ class TestVolumeViewSet(TestCase):
 
 
 class TestMediaViewSet(TestCase):
+    def setUp(self):
+        self.u = User.objects.create_user(username='username', password='password')
+        self.client.login(username='username', password='password')
+
     def test_next_song(self):
         endpoint_name = 'media-next-song'
         response = self.client.get(reverse(endpoint_name))
-        if 'CI' in os.environ:
+        if 'CI' in os.environ or 'TOX' in os.environ:
             self.assertEqual(response.status_code, 500)
         else:
             self.assertEqual(response.status_code, 200)
@@ -70,7 +87,7 @@ class TestMediaViewSet(TestCase):
     def test_play_pause(self):
         endpoint_name = 'media-play-pause'
         response = self.client.get(reverse(endpoint_name))
-        if 'CI' in os.environ:
+        if 'CI' in os.environ or 'TOX' in os.environ:
             self.assertEqual(response.status_code, 500)
         else:
             self.assertEqual(response.status_code, 200)
