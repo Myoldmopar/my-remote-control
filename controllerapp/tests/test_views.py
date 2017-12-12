@@ -10,7 +10,6 @@ class SwaggerViewTests(TestCase):
     def test_swagger(self):
         endpoint_name = 'swagger'
         if 'CI' in os.environ:
-            print("***INSIDE CI SECTION OF SWAGGER VIEW TEST****")
             with self.assertRaises(ALSAAudioError):
                 self.client.get(reverse(endpoint_name))
         else:
