@@ -31,4 +31,5 @@ urlpatterns = [
     url(r'^controls/', control_page, name='controls'),
     url(r'api/', include(api_router.urls)),
     url(r'^swagger/', swagger_view, name='swagger'),
+    url(r'^', include('pin_passcode.urls')),
 ]
