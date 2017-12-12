@@ -14,22 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-from django.contrib import admin
-from rest_framework import routers
-from controllerapp.views import VolumeViewSet, MediaViewSet, control_page
-from rest_framework_swagger.views import get_swagger_view
-
-swagger_view = get_swagger_view(title='Beast Remote Controller API')
-
-api_router = routers.SimpleRouter()
-api_router.register(r'volume', VolumeViewSet, base_name='volume')
-api_router.register(r'media', MediaViewSet, base_name='media')
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^$', control_page, name='controls'),
-    url(r'^controls/', control_page, name='controls'),
-    url(r'api/', include(api_router.urls)),
-    url(r'^swagger/', swagger_view, name='swagger'),
+    # admin page; nothing for now
+    # url(r'^admin/', admin.site.urls),
+
+    # bring in all the controls endpoints to the routes
+    url(r'controls/', include('controllerapp.urls', namespace='controls')),
+
+    # add the pin_passcode endpoints
     url(r'^', include('pin_passcode.urls')),
 ]
