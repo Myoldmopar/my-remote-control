@@ -22,7 +22,7 @@ class VolumeViewSet(viewsets.GenericViewSet):
         response = self.volume.up_increment()
         if response.success:
             return JsonResponse(response.to_dict(), status=status.HTTP_200_OK)
-        else:
+        else:  # pragma no cover
             return JsonResponse(response.to_dict(), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     @list_route(methods=['GET'])
@@ -30,7 +30,7 @@ class VolumeViewSet(viewsets.GenericViewSet):
         response = self.volume.down_increment()
         if response.success:
             return JsonResponse(response.to_dict(), status=status.HTTP_200_OK)
-        else:
+        else:  # pragma no cover
             return JsonResponse(response.to_dict(), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     @list_route(methods=['GET'])
@@ -38,7 +38,7 @@ class VolumeViewSet(viewsets.GenericViewSet):
         response = self.volume.set_mute_status()
         if response.success:
             return JsonResponse(response.to_dict(), status=status.HTTP_200_OK)
-        else:
+        else:  # pragma no cover
             return JsonResponse(response.to_dict(), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
@@ -52,7 +52,7 @@ class MediaViewSet(viewsets.GenericViewSet):
         response = self.media.play_pause()
         if response.success:
             return JsonResponse(response.to_dict(), status=status.HTTP_200_OK)
-        else:
+        else:  # pragma no cover
             return JsonResponse(response.to_dict(), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     @list_route(methods=['GET'])
@@ -60,5 +60,5 @@ class MediaViewSet(viewsets.GenericViewSet):
         response = self.media.next_song()
         if response.success:
             return JsonResponse(response.to_dict(), status=status.HTTP_200_OK)
-        else:
+        else:  # pragma no cover
             return JsonResponse(response.to_dict(), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
