@@ -131,9 +131,9 @@ STATICFILES_DIRS = [
 ]
 
 # the passcode required to login as the above user, using 0-9 and '#'
-if 'HOME' not in os.environ:
+if 'HOME' not in os.environ:  # pragma no cover
     PIN_PASSCODE_PIN = '1234'
-else:
+else:  # pragma no cover
     pin_passcode_file = os.path.join(os.environ['HOME'], '.pin_passcode_pin')
     if not os.path.exists(pin_passcode_file):
         print("***You need a ~/.pin_passcode_pin file with your login passcode***")

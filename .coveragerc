@@ -5,5 +5,4 @@ omit =
         *test_*.py
         *.pyenv*
         manage.py
-        settings.py
         controllerapp/management/*
