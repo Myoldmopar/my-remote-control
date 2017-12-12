@@ -54,18 +54,16 @@ class TestVolumeViewSet(TestCase):
 class TestMediaViewSet(TestCase):
     def test_next_song(self):
         endpoint_name = 'media-next-song'
-        # if 'CI' in os.environ:
-        #     with self.assertRaises(ALSAAudioError):
-        #         self.client.get(reverse(endpoint_name))
-        # else:
         response = self.client.get(reverse(endpoint_name))
-        self.assertEqual(response.status_code, 200)
-    #
-    # def test_play_pause(self):
-    #     endpoint_name = 'media-play-pause'
-    #     if 'CI' in os.environ:
-    #         with self.assertRaises(ALSAAudioError):
-    #             self.client.get(reverse(endpoint_name))
-    #     else:
-    #         response = self.client.get(reverse(endpoint_name))
-    #         self.assertEqual(response.status_code, 200)
+        if 'CI' in os.environ:
+            self.assertEqual(response.status_code, 500)
+        else:
+            self.assertEqual(response.status_code, 200)
+
+    def test_play_pause(self):
+        endpoint_name = 'media-play-pause'
+        response = self.client.get(reverse(endpoint_name))
+        if 'CI' in os.environ:
+            self.assertEqual(response.status_code, 500)
+        else:
+            self.assertEqual(response.status_code, 200)
