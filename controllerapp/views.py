@@ -18,27 +18,27 @@ class VolumeViewSet(viewsets.GenericViewSet):
         self.volume = VolumeController()
 
     @list_route(methods=['GET'])
-    def up(self, request):
+    def up(self, request):  # pragma no cover
         response = self.volume.up_increment()
         if response.success:
             return JsonResponse(response.to_dict(), status=status.HTTP_200_OK)
-        else:  # pragma no cover
+        else:
             return JsonResponse(response.to_dict(), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     @list_route(methods=['GET'])
-    def down(self, request):
+    def down(self, request):  # pragma no cover
         response = self.volume.down_increment()
         if response.success:
             return JsonResponse(response.to_dict(), status=status.HTTP_200_OK)
-        else:  # pragma no cover
+        else:
             return JsonResponse(response.to_dict(), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     @list_route(methods=['GET'])
-    def toggle_mute(self, request):
+    def toggle_mute(self, request):  # pragma no cover
         response = self.volume.set_mute_status()
         if response.success:
             return JsonResponse(response.to_dict(), status=status.HTTP_200_OK)
-        else:  # pragma no cover
+        else:
             return JsonResponse(response.to_dict(), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
@@ -48,17 +48,17 @@ class MediaViewSet(viewsets.GenericViewSet):
         self.media = MediaController()
 
     @list_route(methods=['GET'])
-    def play_pause(self, request):
+    def play_pause(self, request):  # pragma no cover
         response = self.media.play_pause()
         if response.success:
             return JsonResponse(response.to_dict(), status=status.HTTP_200_OK)
-        else:  # pragma no cover
+        else:
             return JsonResponse(response.to_dict(), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     @list_route(methods=['GET'])
-    def next_song(self, request):
+    def next_song(self, request):  # pragma no cover
         response = self.media.next_song()
         if response.success:
             return JsonResponse(response.to_dict(), status=status.HTTP_200_OK)
-        else:  # pragma no cover
+        else:
             return JsonResponse(response.to_dict(), status=status.HTTP_500_INTERNAL_SERVER_ERROR)

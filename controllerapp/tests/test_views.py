@@ -6,6 +6,13 @@ from django.core.urlresolvers import reverse
 from django.test import TestCase
 
 
+class ControlsViewTests(TestCase):
+    def test_control_page(self):
+        endpoint_name = 'controls'
+        response = self.client.get(reverse(endpoint_name))
+        self.assertEqual(response.status_code, 200)
+
+
 class SwaggerViewTests(TestCase):
     def test_swagger(self):
         endpoint_name = 'swagger'
