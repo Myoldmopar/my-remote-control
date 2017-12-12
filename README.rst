@@ -7,7 +7,7 @@ Honestly, this is mostly just an exercise in refining my web skills, but will ma
 Documentation |docimage|_
 -------------------------
 
-Documentation is hosted on [ReadTheDocs](http://solar-calculations.readthedocs.org/en/latest/).
+Documentation is hosted on `ReadTheDocs <http://solar-calculations.readthedocs.org/en/latest>`__.
 To build the documentation, enter the docs/ subdirectory and execute `make html`; then open `/docs/_build/html/index.html` to see the documentation.
 The API also has built in Swagger documentation, at the `/swagger/` endpoint.
 
