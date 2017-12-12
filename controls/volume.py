@@ -57,11 +57,11 @@ class VolumeController(object):
     Muted = 1
     """In alsamixer, the muted state is captured by integer zero."""
 
-    def __init__(self):
+    def __init__(self):  # pragma no cover
         self._mixer = alsaaudio.Mixer()  # let it throw an exception if needed, caller should catch it
         self._increment = 4
 
-    def get_volume(self):
+    def get_volume(self):  # pragma no cover
         """
         This function retrieves the current volume for the system.
 
@@ -73,7 +73,7 @@ class VolumeController(object):
         except IndexError:
             return FailureReturnTypeBase('Invalid _mixer volume retrieval, check permissions and configuration.')
 
-    def up_increment(self):
+    def up_increment(self):  # pragma no cover
         """
         This function increments the volume of the system.  If the sound was muted, this will unmute it.
 
@@ -95,7 +95,7 @@ class VolumeController(object):
         self.set_mute_status(new_mute_status=VolumeController.Unmuted)  # unmute if we are muted
         return SuccessfulVolumeReturnType(new_volume)
 
-    def down_increment(self):
+    def down_increment(self):  # pragma no cover
         """
         This function decrements the volume of the system.
 
@@ -116,7 +116,7 @@ class VolumeController(object):
             return FailureReturnTypeBase('Could not set volume, check permissions and system configuration')
         return SuccessfulVolumeReturnType(new_volume)
 
-    def set_mute_status(self, new_mute_status=-1):
+    def set_mute_status(self, new_mute_status=-1):  # pragma no cover
         """
         This function sets or toggles the mute state of the system.  If no argument is provided, mute state is toggled.
 

@@ -11,7 +11,7 @@ class MediaController(object):
     """
 
     @staticmethod
-    def play_pause():
+    def play_pause():  # pragma no cover
         """
         This function will attempt to simulate the play/pause media button, either restarting music or pausing it.
 
@@ -24,7 +24,7 @@ class MediaController(object):
             return FailureReturnTypeBase('Couldn\'t toggle play/pause, xdotool exit code: ' + str(return_code))
 
     @staticmethod
-    def next_song():
+    def next_song():  # pragma no cover
         """
         This function will attempt to simulate the next song media button, which will typically also unpause music.
 

@@ -4,6 +4,12 @@ My Remote Control
 This repo is the Django-backed, Angular-fronted website for my beast's remote control.
 Honestly, this is mostly just an exercise in refining my web skills, but will make a nice site/app anyway.
 
+If you look very closely at the code coverage, you'll see it's not great.  There are a lot of pieces ignored.
+This has to do with how this application is based on media/volume controls, which don't exist on CI images.
+I can test the successful code paths locally; I can test the unsuccessful code paths on CI; but not both in any one spot.
+So I test as best I can and then I don't worry about it anymore.  Occasionally I will try to loosen the ignored coverage
+and see if I can gain more real coverage.
+
 Documentation |docimage|_
 -------------------------
 

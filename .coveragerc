@@ -4,3 +4,4 @@ omit =
         .tox/*
         *test_*.py
         *.pyenv*
+        manage.py
