@@ -15,7 +15,7 @@ env:
     - TOX_ENV=spelling
 
 install:
-  - sudo apt-get install libasound2-dev python-enchant -y
+  - sudo apt-get install libasound2-dev python-enchant xdotool -y
   - pip install tox
   - pip install --upgrade pip
   - pip install tox coveralls
