@@ -9,7 +9,8 @@ from django.test import TestCase
 class SwaggerViewTests(TestCase):
     def test_swagger(self):
         endpoint_name = 'swagger'
-        if 'CI' in os.environ.get('CI'):
+        if 'CI' in os.environ:
+            print("***INSIDE CI SECTION OF SWAGGER VIEW TEST****")
             with self.assertRaises(ALSAAudioError):
                 self.client.get(reverse(endpoint_name))
         else:
@@ -25,7 +26,7 @@ class SwaggerViewTests(TestCase):
 class TestVolumeViewSet(TestCase):
     def test_up(self):
         endpoint_name = 'volume-up'
-        if 'CI' in os.environ.get('CI'):
+        if 'CI' in os.environ:
             with self.assertRaises(ALSAAudioError):
                 self.client.get(reverse(endpoint_name))
         else:
@@ -34,7 +35,7 @@ class TestVolumeViewSet(TestCase):
 
     def test_down(self):
         endpoint_name = 'volume-down'
-        if 'CI' in os.environ.get('CI'):
+        if 'CI' in os.environ:
             with self.assertRaises(ALSAAudioError):
                 self.client.get(reverse(endpoint_name))
         else:
@@ -43,7 +44,7 @@ class TestVolumeViewSet(TestCase):
 
     def test_mute(self):
         endpoint_name = 'volume-toggle-mute'
-        if 'CI' in os.environ.get('CI'):
+        if 'CI' in os.environ:
             with self.assertRaises(ALSAAudioError):
                 self.client.get(reverse(endpoint_name))
         else:
