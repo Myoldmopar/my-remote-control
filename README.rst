@@ -27,6 +27,17 @@ I can test the successful code paths locally; I can test the unsuccessful code p
 So I test as best I can and then I don't worry about it anymore.  Occasionally I will try to loosen the ignored coverage
 and see if I can gain more real coverage.
 
+Using
+-----
+
+Download/pip?  Then get it running.  Create a file at ~/.pin_passcode_pin, and enter four numeric digits, and that's it.  That's your passcode.
+
+Developing
+----------
+
+Clone, pip, npm, else?
+
+
 .. |tstimage| image:: https://travis-ci.org/Myoldmopar/my-remote-control.svg?branch=master
 .. _tstimage: https://travis-ci.org/Myoldmopar/my-remote-control
 
