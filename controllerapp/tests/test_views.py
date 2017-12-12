@@ -13,7 +13,7 @@ class ControlsViewTests(TestCase):
         self.client.login(username='username', password='password')
 
     def test_control_page(self):
-        endpoint_name = 'controls'
+        endpoint_name = 'controls:controls'
         response = self.client.get(reverse(endpoint_name))
         self.assertEqual(response.status_code, 200)
 
@@ -24,7 +24,7 @@ class SwaggerViewTests(TestCase):
         self.client.login(username='username', password='password')
 
     def test_swagger(self):
-        endpoint_name = 'swagger'
+        endpoint_name = 'controls:swagger'
         if 'CI' in os.environ:
             with self.assertRaises(ALSAAudioError):
                 self.client.get(reverse(endpoint_name))
@@ -44,7 +44,7 @@ class TestVolumeViewSet(TestCase):
         self.client.login(username='username', password='password')
 
     def test_up(self):
-        endpoint_name = 'volume-up'
+        endpoint_name = 'controls:api:volume-up'
         if 'CI' in os.environ:
             with self.assertRaises(ALSAAudioError):
                 self.client.get(reverse(endpoint_name))
@@ -53,7 +53,7 @@ class TestVolumeViewSet(TestCase):
             self.assertEqual(response.status_code, 200)
 
     def test_down(self):
-        endpoint_name = 'volume-down'
+        endpoint_name = 'controls:api:volume-down'
         if 'CI' in os.environ:
             with self.assertRaises(ALSAAudioError):
                 self.client.get(reverse(endpoint_name))
@@ -62,7 +62,7 @@ class TestVolumeViewSet(TestCase):
             self.assertEqual(response.status_code, 200)
 
     def test_mute(self):
-        endpoint_name = 'volume-toggle-mute'
+        endpoint_name = 'controls:api:volume-toggle-mute'
         if 'CI' in os.environ:
             with self.assertRaises(ALSAAudioError):
                 self.client.get(reverse(endpoint_name))
@@ -77,7 +77,7 @@ class TestMediaViewSet(TestCase):
         self.client.login(username='username', password='password')
 
     def test_next_song(self):
-        endpoint_name = 'media-next-song'
+        endpoint_name = 'controls:api:media-next-song'
         response = self.client.get(reverse(endpoint_name))
         if 'CI' in os.environ or 'TOX' in os.environ:
             self.assertEqual(response.status_code, 500)
@@ -85,7 +85,7 @@ class TestMediaViewSet(TestCase):
             self.assertEqual(response.status_code, 200)
 
     def test_play_pause(self):
-        endpoint_name = 'media-play-pause'
+        endpoint_name = 'controls:api:media-play-pause'
         response = self.client.get(reverse(endpoint_name))
         if 'CI' in os.environ or 'TOX' in os.environ:
             self.assertEqual(response.status_code, 500)
